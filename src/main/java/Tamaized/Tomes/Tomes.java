@@ -4,6 +4,7 @@ import Tamaized.TamModized.TamModBase;
 import Tamaized.TamModized.TamModized;
 import Tamaized.TamModized.proxy.AbstractProxy;
 import Tamaized.Tomes.network.ServerPacketHandler;
+import Tamaized.Tomes.registry.ModCreativeTabs;
 import Tamaized.Tomes.registry.ModItems;
 import Tamaized.Tomes.sound.ModSoundEvents;
 import net.minecraftforge.fml.common.Mod;
@@ -29,6 +30,7 @@ public class Tomes extends TamModBase {
 	public static FMLEventChannel channel;
 
 	public static ModItems items;
+	public static ModCreativeTabs tabs;
 
 	@SidedProxy(clientSide = "Tamaized.Tomes.proxy.ClientProxy", serverSide = "Tamaized.Tomes.proxy.ServerProxy")
 	public static AbstractProxy proxy;
@@ -73,6 +75,7 @@ public class Tomes extends TamModBase {
 
 		channel = NetworkRegistry.INSTANCE.newEventDrivenChannel(networkChannelName);
 
+		register(tabs = new ModCreativeTabs());
 		register(items = new ModItems());
 
 		ModSoundEvents.register();

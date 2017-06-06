@@ -3,22 +3,23 @@ package Tamaized.Tomes.registry;
 import Tamaized.TamModized.registry.ITamModel;
 import Tamaized.TamModized.registry.ITamRegistry;
 import Tamaized.Tomes.Tomes;
-import Tamaized.Tomes.items.ItemTome;
-import Tamaized.Tomes.items.TomeThunder;
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.ItemStack;
 
 import java.util.ArrayList;
 
-public class ModItems implements ITamRegistry {
+public class ModCreativeTabs implements ITamRegistry {
 
-	private ArrayList<ITamModel> models;
-
-	public static ItemTome thunder;
+	public static CreativeTabs tab;
 
 	@Override
 	public void preInit() {
-		models = new ArrayList<>();
-
-		models.add(thunder = new TomeThunder());
+		tab = new CreativeTabs("tomes") {
+			@Override
+			public ItemStack getTabIconItem() {
+				return new ItemStack(Tomes.items.thunder);
+			}
+		};
 	}
 
 	@Override
@@ -48,7 +49,7 @@ public class ModItems implements ITamRegistry {
 
 	@Override
 	public ArrayList<ITamModel> getModelList() {
-		return models;
+		return new ArrayList<>();
 	}
 
 	@Override
