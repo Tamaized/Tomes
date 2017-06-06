@@ -3,6 +3,7 @@ package Tamaized.Tomes;
 import Tamaized.TamModized.TamModBase;
 import Tamaized.TamModized.TamModized;
 import Tamaized.TamModized.proxy.AbstractProxy;
+import Tamaized.Tomes.network.ServerPacketHandler;
 import Tamaized.Tomes.registry.ModItems;
 import Tamaized.Tomes.sound.ModSoundEvents;
 import net.minecraftforge.fml.common.Mod;
