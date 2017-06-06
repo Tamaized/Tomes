@@ -1,0 +1,18 @@
+[
+{
+  "modid": "tomes",
+  "name": "Tomes",
+  "description": "Cast magical effects from the spoken words of a Tome",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["Tamaized"],
+  "credits": "Tamaized",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": [ "forge@[${fVersion},)", "tammodized@[${tamVersion},)" ],
+  "requiredMods": [ "forge@[${fVersion},)", "tammodized@[${tamVersion},)" ],
+  "useDependencyInformation": true
+}
+]
