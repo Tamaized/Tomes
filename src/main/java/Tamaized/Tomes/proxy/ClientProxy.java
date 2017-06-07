@@ -2,7 +2,13 @@ package Tamaized.Tomes.proxy;
 
 import Tamaized.TamModized.proxy.AbstractProxy;
 import Tamaized.Tomes.Tomes;
+import Tamaized.Tomes.entity.EntityThunder;
+import Tamaized.Tomes.entity.render.RenderSpellThunder;
 import Tamaized.Tomes.network.ClientPacketHandler;
+import net.minecraft.client.renderer.entity.Render;
+import net.minecraft.client.renderer.entity.RenderManager;
+import net.minecraftforge.fml.client.registry.IRenderFactory;
+import net.minecraftforge.fml.client.registry.RenderingRegistry;
 
 public class ClientProxy extends AbstractProxy {
 
@@ -17,7 +23,12 @@ public class ClientProxy extends AbstractProxy {
 
 	@Override
 	public void preInit() {
-
+		RenderingRegistry.registerEntityRenderingHandler(EntityThunder.class, new IRenderFactory<EntityThunder>() {
+			@Override
+			public Render<? super EntityThunder> createRenderFor(RenderManager manager) {
+				return new RenderSpellThunder(manager);
+			}
+		});
 	}
 
 	@Override

@@ -1,5 +1,6 @@
 package Tamaized.Tomes.items;
 
+import Tamaized.Tomes.entity.EntityThunder;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
@@ -12,6 +13,8 @@ public class TomeThunder extends ItemTome {
 
 	@Override
 	public boolean use(World world, EntityPlayer caster) {
+		if (!world.isRemote)
+			world.spawnEntity(new EntityThunder(world, caster));
 		return true;
 	}
 
