@@ -4,18 +4,17 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.DamageSource;
-import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 
-public class EntityThunder extends ProjectileBase {
+public class EntityElthunder extends ProjectileBase {
 
-	public EntityThunder(World worldIn) {
+	public EntityElthunder(World worldIn) {
 		super(worldIn);
 	}
 
-	public EntityThunder(World world, EntityPlayer caster) {
+	public EntityElthunder(World world, EntityPlayer caster) {
 		super(world, caster, caster.posX, caster.posY, caster.posZ);
-		setDamageRangeSpeedGravity(4, 10, 1, 0);
+		setDamageRangeSpeedGravity(6, 20, 1.5f, 0);
 	}
 
 	@Override
@@ -35,6 +34,7 @@ public class EntityThunder extends ProjectileBase {
 
 	@Override
 	protected void arrowHit(EntityLivingBase entity) {
-		entity.knockBack(this, 0.35f, -motionX, -motionZ);
+		entity.knockBack(this, 3, -motionX, -motionZ);
 	}
+
 }

@@ -3,6 +3,7 @@ package Tamaized.Tomes;
 import Tamaized.TamModized.TamModBase;
 import Tamaized.TamModized.TamModized;
 import Tamaized.TamModized.proxy.AbstractProxy;
+import Tamaized.Tomes.entity.EntityElthunder;
 import Tamaized.Tomes.entity.EntityThunder;
 import Tamaized.Tomes.network.ServerPacketHandler;
 import Tamaized.Tomes.registry.ModCreativeTabs;
@@ -81,7 +82,8 @@ public class Tomes extends TamModBase {
 
 		ModSoundEvents.register();
 
-		registerEntity(EntityThunder.class, "Thunder", this, modid, 128, 1,true);
+		registerEntity(EntityThunder.class, "Thunder", this, modid, 128, 1, true);
+		registerEntity(EntityElthunder.class, "Elthunder", this, modid, 128, 1, true);
 
 	}
 

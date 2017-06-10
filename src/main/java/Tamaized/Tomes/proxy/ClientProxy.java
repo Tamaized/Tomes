@@ -2,7 +2,9 @@ package Tamaized.Tomes.proxy;
 
 import Tamaized.TamModized.proxy.AbstractProxy;
 import Tamaized.Tomes.Tomes;
+import Tamaized.Tomes.entity.EntityElthunder;
 import Tamaized.Tomes.entity.EntityThunder;
+import Tamaized.Tomes.entity.render.RenderSpellElthunder;
 import Tamaized.Tomes.entity.render.RenderSpellThunder;
 import Tamaized.Tomes.network.ClientPacketHandler;
 import net.minecraft.client.renderer.entity.Render;
@@ -27,6 +29,12 @@ public class ClientProxy extends AbstractProxy {
 			@Override
 			public Render<? super EntityThunder> createRenderFor(RenderManager manager) {
 				return new RenderSpellThunder(manager);
+			}
+		});
+		RenderingRegistry.registerEntityRenderingHandler(EntityElthunder.class, new IRenderFactory<EntityElthunder>() {
+			@Override
+			public Render<? super EntityElthunder> createRenderFor(RenderManager manager) {
+				return new RenderSpellElthunder(manager);
 			}
 		});
 	}

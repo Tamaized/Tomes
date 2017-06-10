@@ -23,7 +23,7 @@ public class RenderSpellThunder extends RenderEntity {
 		super(renderManagerIn);
 	}
 
-	private static void drawBoltSegment(Tessellator tessellator, Vec3d p1, Vec3d p2, float scale) {
+	private static void drawBoltSegment(Tessellator tessellator, Vec3d p1, Vec3d p2, float scale, int color) {
 		VertexBuffer buffer = tessellator.getBuffer();
 
 		GlStateManager.pushMatrix();
@@ -47,15 +47,19 @@ public class RenderSpellThunder extends RenderEntity {
 			float verX = MathHelper.sin((float) (i % 3) * (float) Math.PI * 2F / (float) 3) * f * scale;
 			float verZ = MathHelper.cos((float) (i % 3) * (float) Math.PI * 2F / (float) 3) * f * scale;
 
-			buffer.pos(verX, dist, verZ).color(0.15F, 0.3F, 1F, 0.3F).endVertex();
-			buffer.pos(verX, 0, verZ).color(0.15F, 0.3F, 1F, 0.3F).endVertex();
+			float r = ((color >> 24) & 0xFF) / 255F;
+			float g = ((color >> 16) & 0xFF) / 255F;
+			float b = ((color >> 8) & 0xFF) / 255F;
+			float a = ((color) & 0xFF) / 255F;
+			buffer.pos(verX, dist, verZ).color(r, g, b, a).endVertex();
+			buffer.pos(verX, 0, verZ).color(r, g, b, a).endVertex();
 		}
 		tessellator.draw();
 
 		GlStateManager.popMatrix();
 	}
 
-	public static void renderBoltBetween(Vec3d point1, Vec3d point2, double scale, double maxDeflection, int maxSegments) {
+	public static void renderBoltBetween(Vec3d point1, Vec3d point2, double scale, double maxDeflection, int maxSegments, int color) {
 		Tessellator tessellator = Tessellator.getInstance();
 		Random random = new Random();
 
@@ -91,7 +95,7 @@ public class RenderSpellThunder extends RenderEntity {
 
 		double rScale = scale * (0.5 + (random.nextDouble() * 0.5));
 		for (int i = 1; i < vectors.length; i++) {
-			drawBoltSegment(tessellator, vectors[i - 1], vectors[i], (float) rScale);
+			drawBoltSegment(tessellator, vectors[i - 1], vectors[i], (float) rScale, color);
 		}
 
 		GlStateManager.disableBlend();
@@ -102,7 +106,7 @@ public class RenderSpellThunder extends RenderEntity {
 	@Override
 	public void doRender(Entity entity, double x, double y, double z, float entityYaw, float partialTicks) {
 		Vec3d pos = new Vec3d(x, y, z);
-		Vec3d dir = new Vec3d(0, 1, 0).rotatePitch((float) Math.toRadians(entity.prevRotationPitch+90)).rotateYaw((float) Math.toRadians(entity.prevRotationYaw));
-		renderBoltBetween(pos, pos.add(dir), 0.05f, 0.35f, 10);
+		Vec3d dir = new Vec3d(0, 1, 0).rotatePitch((float) Math.toRadians(entity.prevRotationPitch + 90)).rotateYaw((float) Math.toRadians(entity.prevRotationYaw));
+		renderBoltBetween(pos, pos.add(dir), 0.05f, 0.35f, 10, 0x264CFF4C);
 	}
 }

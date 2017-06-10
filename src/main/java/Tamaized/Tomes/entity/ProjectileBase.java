@@ -61,11 +61,9 @@ public abstract class ProjectileBase extends EntityArrow implements IProjectile,
 	private int knockbackStrength;
 
 	private double speed = 0.5D;
-	private float range = 0.0F;
+	private float gravity = 0.0F;
 	private int maxRange = -1;
 	private Vec3d startingPoint;
-
-	private int color = 0xFFFFFFFF;
 
 	public ProjectileBase(World worldIn) {
 		super(worldIn);
@@ -105,14 +103,6 @@ public abstract class ProjectileBase extends EntityArrow implements IProjectile,
 		setThrowableHeading(d0, d1/* + d3 * 0.20000000298023224D */, d2, 1.6F, (float) (14 - world.getDifficulty().getDifficultyId() * 4));
 	}
 
-	public int getColor() {
-		return color;
-	}
-
-	public void setColor(int c) {
-		color = c;
-	}
-
 	public void setTheVelocity(double x, double y, double z) {
 		this.motionX = x;
 		this.motionY = y;
@@ -131,7 +121,7 @@ public abstract class ProjectileBase extends EntityArrow implements IProjectile,
 		maxRange = range;
 	}
 
-	public void setSpeed(int s) {
+	public void setSpeed(double s) {
 		speed = s;
 	}
 
@@ -147,17 +137,16 @@ public abstract class ProjectileBase extends EntityArrow implements IProjectile,
 		buffer.writeDouble(posZ);
 
 		buffer.writeDouble(damage);
-		buffer.writeFloat(range);
+		buffer.writeInt(maxRange);
 		buffer.writeDouble(speed);
+		buffer.writeFloat(gravity);
 
-		buffer.writeInt(color);
 	}
 
 	@Override
 	public void readSpawnData(ByteBuf data) {
 		setPosition(data.readDouble(), data.readDouble(), data.readDouble());
-		setDamageRangeSpeed(data.readDouble(), data.readFloat(), data.readDouble());
-		setColor(data.readInt());
+		setDamageRangeSpeedGravity(data.readDouble(), data.readInt(), data.readDouble(), data.readFloat());
 	}
 
 	@Override
@@ -227,7 +216,7 @@ public abstract class ProjectileBase extends EntityArrow implements IProjectile,
 			timeInGround = 0;
 			++ticksInAir;
 			if (maxRange >= 0) {
-				if (startingPoint.distanceTo(getPositionVector()) >= maxRange)
+				if (!world.isRemote && startingPoint.distanceTo(getPositionVector()) >= maxRange)
 					setDead();
 			} else if (ticksInAir > 20 * 10)
 				setDead();
@@ -273,7 +262,7 @@ public abstract class ProjectileBase extends EntityArrow implements IProjectile,
 			rotationPitch = prevRotationPitch + (rotationPitch - prevRotationPitch) * 0.2F;
 			rotationYaw = prevRotationYaw + (rotationYaw - prevRotationYaw) * 0.2F;
 			float f1 = 0.99F;
-			float f2 = range;
+			float f2 = gravity;
 
 			if (isInWater()) {
 				setDead();
@@ -458,10 +447,11 @@ public abstract class ProjectileBase extends EntityArrow implements IProjectile,
 
 	}
 
-	public void setDamageRangeSpeed(double d, float r, double s) {
+	public void setDamageRangeSpeedGravity(double d, int r, double s, float g) {
 		damage = d;
-		range = r;
+		maxRange = r;
 		speed = s;
+		//gravity = g;
 	}
 
 	@Override
