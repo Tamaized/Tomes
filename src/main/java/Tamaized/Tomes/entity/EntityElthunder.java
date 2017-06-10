@@ -24,7 +24,7 @@ public class EntityElthunder extends ProjectileBase {
 
 	@Override
 	protected DamageSource getDamageSource() {
-		return DamageSource.MAGIC;
+		return DamageSource.causeIndirectMagicDamage(this, shootingEntity);
 	}
 
 	@Override

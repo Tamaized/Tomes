@@ -9,7 +9,7 @@ import net.minecraft.world.World;
 public class TomeThunder extends ItemTome {
 
 	public TomeThunder() {
-		super("tome_thunder", 30);
+		super("tome_thunder", 20);
 	}
 
 	@Override
