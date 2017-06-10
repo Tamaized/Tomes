@@ -32,7 +32,7 @@ import java.util.HashSet;
 
 public abstract class ProjectileBase extends EntityArrow implements IProjectile, IEntityAdditionalSpawnData {
 
-	private static final Predicate<Entity> ARROW_TARGETS = Predicates.and(new Predicate[]{EntitySelectors.NOT_SPECTATING, EntitySelectors.IS_ALIVE, new Predicate<Entity>() {
+	protected static final Predicate<Entity> ARROW_TARGETS = Predicates.and(new Predicate[]{EntitySelectors.NOT_SPECTATING, EntitySelectors.IS_ALIVE, new Predicate<Entity>() {
 		public boolean apply(@Nullable Entity p_apply_1_) {
 			return p_apply_1_.canBeCollidedWith();
 		}
@@ -47,23 +47,23 @@ public abstract class ProjectileBase extends EntityArrow implements IProjectile,
 	public Entity shootingEntity;
 	protected boolean inGround;
 	protected int timeInGround;
-	private int xTile;
-	private int yTile;
-	private int zTile;
-	private Block inTile;
-	private int inData;
-	private int ticksInGround;
-	private int ticksInAir;
-	private double damage;
+	protected int xTile;
+	protected int yTile;
+	protected int zTile;
+	protected Block inTile;
+	protected int inData;
+	protected int ticksInGround;
+	protected int ticksInAir;
+	protected double damage;
 	/**
 	 * The amount of knockback an arrow applies when it hits a mob.
 	 */
-	private int knockbackStrength;
+	protected int knockbackStrength;
 
-	private double speed = 0.5D;
-	private float gravity = 0.0F;
-	private int maxRange = -1;
-	private Vec3d startingPoint;
+	protected double speed = 0.5D;
+	protected float gravity = 0.0F;
+	protected int maxRange = -1;
+	protected Vec3d startingPoint;
 
 	public ProjectileBase(World worldIn) {
 		super(worldIn);
@@ -86,7 +86,7 @@ public abstract class ProjectileBase extends EntityArrow implements IProjectile,
 	public ProjectileBase(World worldIn, EntityLivingBase shooter, double x, double y, double z) {
 		this(worldIn);
 		shootingEntity = shooter;
-		setPosition(x, y + shooter.getEyeHeight(), z);
+		setPosition(x, y + shooter.getEyeHeight() - 0.5f, z);
 		startingPoint = getPositionVector();
 		Vec3d vec = shooter.getLook(1.0f);
 		setTheVelocity(vec.xCoord, vec.yCoord, vec.zCoord);
@@ -224,7 +224,7 @@ public abstract class ProjectileBase extends EntityArrow implements IProjectile,
 			Vec3d vec3d = new Vec3d(posX + motionX, posY + motionY, posZ + motionZ);
 			HashSet<Entity> set = new HashSet<Entity>();
 			set.add(shootingEntity);
-			RayTraceResult raytraceresult = RayTraceHelper.tracePath(world, vec3d1, vec3d, 1, set);// world.rayTraceBlocks(vec3d1, vec3d, false, true, false);
+			RayTraceResult raytraceresult = RayTraceHelper.tracePath(world, vec3d1, vec3d, 1, set);
 			if (raytraceresult != null && raytraceresult.entityHit != null && raytraceresult.entityHit instanceof EntityPlayer) {
 				EntityPlayer entityplayer = (EntityPlayer) raytraceresult.entityHit;
 
@@ -285,8 +285,6 @@ public abstract class ProjectileBase extends EntityArrow implements IProjectile,
 			doBlockCollisions();
 		}
 
-		if (world.isRemote)
-			particles();
 	}
 
 	protected abstract boolean canHitEntity(Entity entity);
@@ -385,10 +383,6 @@ public abstract class ProjectileBase extends EntityArrow implements IProjectile,
 
 	@Override
 	protected abstract void arrowHit(EntityLivingBase entity);
-
-	@SideOnly(Side.CLIENT)
-	private void particles() {
-	}
 
 	/**
 	 * (abstract) Protected helper method to write subclass entity data to NBT.

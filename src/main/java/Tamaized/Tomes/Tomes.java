@@ -5,6 +5,7 @@ import Tamaized.TamModized.TamModized;
 import Tamaized.TamModized.proxy.AbstractProxy;
 import Tamaized.Tomes.entity.EntityArcthunder;
 import Tamaized.Tomes.entity.EntityElthunder;
+import Tamaized.Tomes.entity.EntityThoron;
 import Tamaized.Tomes.entity.EntityThunder;
 import Tamaized.Tomes.network.ServerPacketHandler;
 import Tamaized.Tomes.registry.ModCreativeTabs;
@@ -86,6 +87,7 @@ public class Tomes extends TamModBase {
 		registerEntity(EntityThunder.class, "Thunder", this, modid, 128, 1, true);
 		registerEntity(EntityElthunder.class, "Elthunder", this, modid, 128, 1, true);
 		registerEntity(EntityArcthunder.class, "Arcthunder", this, modid, 128, 1, true);
+		registerEntity(EntityThoron.class, "Thoron", this, modid, 128, 1, true);
 
 	}
 

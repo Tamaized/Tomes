@@ -23,7 +23,7 @@ public class RenderSpellThunder extends RenderEntity {
 		super(renderManagerIn);
 	}
 
-	private static void drawBoltSegment(Tessellator tessellator, Vec3d p1, Vec3d p2, float scale, int color) {
+	public static void drawBoltSegment(Tessellator tessellator, Vec3d p1, Vec3d p2, float scale, int color) {
 		VertexBuffer buffer = tessellator.getBuffer();
 
 		GlStateManager.pushMatrix();
@@ -40,6 +40,7 @@ public class RenderSpellThunder extends RenderEntity {
 		GlStateManager.rotate(90.0F, 1.0F, 0.0F, 0.0F);
 		GlStateManager.rotate(180.0F + rotYaw, 0.0F, 0.0F, -1.0F);
 		GlStateManager.rotate(rotPitch, 1.0F, 0.0F, 0.0F);
+		GlStateManager.disableCull();
 
 		buffer.begin(GL11.GL_TRIANGLE_STRIP, DefaultVertexFormats.POSITION_COLOR);
 		for (int i = 0; i <= 9; i++) {
@@ -56,6 +57,7 @@ public class RenderSpellThunder extends RenderEntity {
 		}
 		tessellator.draw();
 
+		GlStateManager.enableCull();
 		GlStateManager.popMatrix();
 	}
 

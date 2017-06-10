@@ -1,6 +1,5 @@
 package Tamaized.Tomes.entity.render;
 
-import Tamaized.Tomes.Tomes;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.OpenGlHelper;
 import net.minecraft.client.renderer.Tessellator;
@@ -9,16 +8,10 @@ import net.minecraft.client.renderer.entity.RenderEntity;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.entity.Entity;
-import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.Vec3d;
 import org.lwjgl.opengl.GL11;
 
-import javax.xml.bind.annotation.XmlType;
-import java.util.Random;
-
 public class RenderSpellElthunder extends RenderEntity {
-
-	private static final ResourceLocation TEXTURE = new ResourceLocation(Tomes.modid, "textures/entity/elthunder.png");
 
 	public RenderSpellElthunder(RenderManager renderManagerIn) {
 		super(renderManagerIn);
@@ -26,7 +19,6 @@ public class RenderSpellElthunder extends RenderEntity {
 
 	@Override
 	public void doRender(Entity entity, double x, double y, double z, float entityYaw, float partialTicks) {
-		Random rand = new Random();
 		Vec3d pos = new Vec3d(x, y, z);
 		Vec3d dir = new Vec3d(0, 1, 0).rotatePitch((float) Math.toRadians(entity.prevRotationPitch + 90)).rotateYaw((float) Math.toRadians(entity.prevRotationYaw)).scale(2.5f);
 		RenderSpellThunder.renderBoltBetween(pos, pos.add(dir), 0.05f, 0.35f, 4, 0xFFFF004C);

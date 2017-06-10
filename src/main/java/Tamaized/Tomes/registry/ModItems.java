@@ -3,10 +3,7 @@ package Tamaized.Tomes.registry;
 import Tamaized.TamModized.registry.ITamModel;
 import Tamaized.TamModized.registry.ITamRegistry;
 import Tamaized.Tomes.Tomes;
-import Tamaized.Tomes.items.ItemTome;
-import Tamaized.Tomes.items.TomeArcthunder;
-import Tamaized.Tomes.items.TomeElthunder;
-import Tamaized.Tomes.items.TomeThunder;
+import Tamaized.Tomes.items.*;
 
 import java.util.ArrayList;
 
@@ -17,6 +14,7 @@ public class ModItems implements ITamRegistry {
 	public static ItemTome thunder;
 	public static ItemTome elthunder;
 	public static ItemTome arcthunder;
+	public static ItemTome thoron;
 
 	@Override
 	public void preInit() {
@@ -25,6 +23,7 @@ public class ModItems implements ITamRegistry {
 		models.add(thunder = new TomeThunder());
 		models.add(elthunder = new TomeElthunder());
 		models.add(arcthunder = new TomeArcthunder());
+		models.add(thoron = new TomeThoron());
 	}
 
 	@Override

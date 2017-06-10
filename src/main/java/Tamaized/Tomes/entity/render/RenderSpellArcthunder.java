@@ -1,18 +1,14 @@
 package Tamaized.Tomes.entity.render;
 
-import Tamaized.Tomes.Tomes;
 import Tamaized.Tomes.entity.EntityArcthunder;
 import net.minecraft.client.renderer.entity.RenderEntity;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.entity.Entity;
-import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.Vec3d;
 
 import java.util.Random;
 
 public class RenderSpellArcthunder extends RenderEntity {
-
-	private static final ResourceLocation TEXTURE = new ResourceLocation(Tomes.modid, "textures/entity/elthunder.png");
 
 	public RenderSpellArcthunder(RenderManager renderManagerIn) {
 		super(renderManagerIn);
