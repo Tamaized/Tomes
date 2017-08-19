@@ -1,5 +1,6 @@
 package tamaized.tomes.proxy;
 
+import tamaized.tammodized.network.ClientPacketHandler;
 import tamaized.tomes.Tomes;
 import tamaized.tomes.common.entity.EntityArcthunder;
 import tamaized.tomes.common.entity.EntityElthunder;
@@ -9,7 +10,6 @@ import tamaized.tomes.client.entity.render.RenderSpellArcthunder;
 import tamaized.tomes.client.entity.render.RenderSpellElthunder;
 import tamaized.tomes.client.entity.render.RenderSpellThoron;
 import tamaized.tomes.client.entity.render.RenderSpellThunder;
-import tamaized.tomes.network.ClientPacketHandler;
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraftforge.fml.client.registry.IRenderFactory;
@@ -62,6 +62,6 @@ public class ClientProxy extends AbstractProxy {
 
 	@Override
 	public void postInit() {
-		Tomes.channel.register(new ClientPacketHandler());
+
 	}
 }
