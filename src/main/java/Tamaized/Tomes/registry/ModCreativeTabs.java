@@ -1,4 +1,4 @@
-package Tamaized.Tomes.registry;
+package tamaized.tomes.registry;
 
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;

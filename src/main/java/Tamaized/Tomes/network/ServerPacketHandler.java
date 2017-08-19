@@ -1,4 +1,4 @@
-package Tamaized.Tomes.network;
+package tamaized.tomes.network;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.ByteBufInputStream;

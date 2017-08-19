@@ -1,7 +1,6 @@
-package Tamaized.Tomes.items;
+package tamaized.tomes.common.items;
 
-import Tamaized.Tomes.entity.EntityArcthunder;
-import Tamaized.Tomes.entity.EntityElthunder;
+import tamaized.tomes.common.entity.EntityArcthunder;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;

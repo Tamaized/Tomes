@@ -1,4 +1,4 @@
-package Tamaized.Tomes.entity.render;
+package tamaized.tomes.client.entity.render;
 
 import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.GlStateManager;

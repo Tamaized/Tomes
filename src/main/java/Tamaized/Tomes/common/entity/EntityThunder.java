@@ -1,10 +1,9 @@
-package Tamaized.Tomes.entity;
+package tamaized.tomes.common.entity;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.DamageSource;
-import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 
 public class EntityThunder extends ProjectileBase {

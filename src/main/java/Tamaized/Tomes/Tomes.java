@@ -1,13 +1,13 @@
-package Tamaized.Tomes;
+package tamaized.tomes;
 
-import Tamaized.Tomes.entity.EntityArcthunder;
-import Tamaized.Tomes.entity.EntityElthunder;
-import Tamaized.Tomes.entity.EntityThoron;
-import Tamaized.Tomes.entity.EntityThunder;
-import Tamaized.Tomes.network.ServerPacketHandler;
-import Tamaized.Tomes.registry.ModCreativeTabs;
-import Tamaized.Tomes.registry.ModItems;
-import Tamaized.Tomes.sound.ModSoundEvents;
+import tamaized.tomes.common.entity.EntityArcthunder;
+import tamaized.tomes.common.entity.EntityElthunder;
+import tamaized.tomes.common.entity.EntityThoron;
+import tamaized.tomes.common.entity.EntityThunder;
+import tamaized.tomes.network.ServerPacketHandler;
+import tamaized.tomes.registry.ModCreativeTabs;
+import tamaized.tomes.registry.ModItems;
+import tamaized.tomes.common.sound.ModSoundEvents;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.SidedProxy;
@@ -36,7 +36,7 @@ public class Tomes extends TamModBase {
 	public static final ModItems items = new ModItems();
 	public static final ModCreativeTabs tabs = new ModCreativeTabs();
 
-	@SidedProxy(clientSide = "Tamaized.Tomes.proxy.ClientProxy", serverSide = "Tamaized.Tomes.proxy.ServerProxy")
+	@SidedProxy(clientSide = "tamaized.tomes.proxy.ClientProxy", serverSide = "tamaized.tomes.proxy.ServerProxy")
 	public static AbstractProxy proxy;
 
 	public static String getVersion() {

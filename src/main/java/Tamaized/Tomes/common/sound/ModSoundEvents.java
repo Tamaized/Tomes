@@ -1,4 +1,4 @@
-package Tamaized.Tomes.sound;
+package tamaized.tomes.common.sound;
 
 public class ModSoundEvents {
 

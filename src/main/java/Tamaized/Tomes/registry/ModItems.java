@@ -1,7 +1,7 @@
-package Tamaized.Tomes.registry;
+package tamaized.tomes.registry;
 
-import Tamaized.Tomes.Tomes;
-import Tamaized.Tomes.items.*;
+import tamaized.tomes.Tomes;
+import tamaized.tomes.common.items.*;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.event.RegistryEvent;

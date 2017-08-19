@@ -1,7 +1,6 @@
-package Tamaized.Tomes.items;
+package tamaized.tomes.common.items;
 
-import Tamaized.Tomes.Tomes;
-import Tamaized.Tomes.registry.ModCreativeTabs;
+import tamaized.tomes.registry.ModCreativeTabs;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;

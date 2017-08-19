@@ -1,15 +1,15 @@
-package Tamaized.Tomes.proxy;
+package tamaized.tomes.proxy;
 
-import Tamaized.Tomes.Tomes;
-import Tamaized.Tomes.entity.EntityArcthunder;
-import Tamaized.Tomes.entity.EntityElthunder;
-import Tamaized.Tomes.entity.EntityThoron;
-import Tamaized.Tomes.entity.EntityThunder;
-import Tamaized.Tomes.entity.render.RenderSpellArcthunder;
-import Tamaized.Tomes.entity.render.RenderSpellElthunder;
-import Tamaized.Tomes.entity.render.RenderSpellThoron;
-import Tamaized.Tomes.entity.render.RenderSpellThunder;
-import Tamaized.Tomes.network.ClientPacketHandler;
+import tamaized.tomes.Tomes;
+import tamaized.tomes.common.entity.EntityArcthunder;
+import tamaized.tomes.common.entity.EntityElthunder;
+import tamaized.tomes.common.entity.EntityThoron;
+import tamaized.tomes.common.entity.EntityThunder;
+import tamaized.tomes.client.entity.render.RenderSpellArcthunder;
+import tamaized.tomes.client.entity.render.RenderSpellElthunder;
+import tamaized.tomes.client.entity.render.RenderSpellThoron;
+import tamaized.tomes.client.entity.render.RenderSpellThunder;
+import tamaized.tomes.network.ClientPacketHandler;
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraftforge.fml.client.registry.IRenderFactory;

@@ -1,4 +1,4 @@
-package Tamaized.Tomes.entity;
+package tamaized.tomes.common.entity;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;

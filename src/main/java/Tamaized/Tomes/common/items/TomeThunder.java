@@ -1,20 +1,20 @@
-package Tamaized.Tomes.items;
+package tamaized.tomes.common.items;
 
-import Tamaized.Tomes.entity.EntityElthunder;
+import tamaized.tomes.common.entity.EntityThunder;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
-public class TomeElthunder extends ItemTome {
+public class TomeThunder extends ItemTome {
 
-	public TomeElthunder() {
-		super("tome_elthunder", 7);
+	public TomeThunder() {
+		super("tome_thunder", 20);
 	}
 
 	@Override
 	public boolean use(World world, EntityPlayer caster) {
 		if (!world.isRemote)
-			world.spawnEntity(new EntityElthunder(world, caster));
+			world.spawnEntity(new EntityThunder(world, caster));
 		return true;
 	}
 

@@ -1,6 +1,6 @@
-package Tamaized.Tomes.entity.render;
+package tamaized.tomes.client.entity.render;
 
-import Tamaized.Tomes.entity.EntityThoron;
+import tamaized.tomes.common.entity.EntityThoron;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.OpenGlHelper;
 import net.minecraft.client.renderer.Tessellator;

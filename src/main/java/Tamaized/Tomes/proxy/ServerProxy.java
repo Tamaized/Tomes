@@ -1,4 +1,4 @@
-package Tamaized.Tomes.proxy;
+package tamaized.tomes.proxy;
 
 import tamaized.tammodized.proxy.AbstractProxy;
 

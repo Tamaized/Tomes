@@ -1,4 +1,4 @@
-package Tamaized.Tomes.entity;
+package tamaized.tomes.common.entity;
 
 import io.netty.buffer.ByteBuf;
 import net.minecraft.entity.Entity;
