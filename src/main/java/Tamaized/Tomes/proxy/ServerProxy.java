@@ -1,6 +1,6 @@
 package Tamaized.Tomes.proxy;
 
-import Tamaized.TamModized.proxy.AbstractProxy;
+import tamaized.tammodized.proxy.AbstractProxy;
 
 public class ServerProxy extends AbstractProxy {
 

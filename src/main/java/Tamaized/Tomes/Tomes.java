@@ -1,8 +1,5 @@
 package Tamaized.Tomes;
 
-import Tamaized.TamModized.TamModBase;
-import Tamaized.TamModized.TamModized;
-import Tamaized.TamModized.proxy.AbstractProxy;
 import Tamaized.Tomes.entity.EntityArcthunder;
 import Tamaized.Tomes.entity.EntityElthunder;
 import Tamaized.Tomes.entity.EntityThoron;
@@ -20,6 +17,9 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.network.FMLEventChannel;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import org.apache.logging.log4j.LogManager;
+import tamaized.tammodized.TamModBase;
+import tamaized.tammodized.TamModized;
+import tamaized.tammodized.proxy.AbstractProxy;
 
 @Mod(modid = Tomes.modid, name = "VoidCraft", version = Tomes.version, dependencies = "required-before:" + TamModized.modid + "@[${tamversion},)")
 public class Tomes extends TamModBase {
@@ -33,8 +33,8 @@ public class Tomes extends TamModBase {
 
 	public static FMLEventChannel channel;
 
-	public static ModItems items;
-	public static ModCreativeTabs tabs;
+	public static final ModItems items = new ModItems();
+	public static final ModCreativeTabs tabs = new ModCreativeTabs();
 
 	@SidedProxy(clientSide = "Tamaized.Tomes.proxy.ClientProxy", serverSide = "Tamaized.Tomes.proxy.ServerProxy")
 	public static AbstractProxy proxy;
@@ -78,9 +78,6 @@ public class Tomes extends TamModBase {
 		logger.info("Starting Tomes PreInit");
 
 		channel = NetworkRegistry.INSTANCE.newEventDrivenChannel(networkChannelName);
-
-		register(tabs = new ModCreativeTabs());
-		register(items = new ModItems());
 
 		ModSoundEvents.register();
 

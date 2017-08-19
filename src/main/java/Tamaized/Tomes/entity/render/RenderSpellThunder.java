@@ -1,9 +1,9 @@
 package Tamaized.Tomes.entity.render;
 
+import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.OpenGlHelper;
 import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.VertexBuffer;
 import net.minecraft.client.renderer.entity.RenderEntity;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
@@ -24,15 +24,15 @@ public class RenderSpellThunder extends RenderEntity {
 	}
 
 	public static void drawBoltSegment(Tessellator tessellator, Vec3d p1, Vec3d p2, float scale, int color) {
-		VertexBuffer buffer = tessellator.getBuffer();
+		BufferBuilder buffer = tessellator.getBuffer();
 
 		GlStateManager.pushMatrix();
-		GlStateManager.translate(p1.xCoord, p1.yCoord, p1.zCoord);
+		GlStateManager.translate(p1.x, p1.y, p1.z);
 
 		double dist = p1.distanceTo(p2);
-		float xd = (float) (p1.xCoord - p2.xCoord);
-		float yd = (float) (p1.yCoord - p2.yCoord);
-		float zd = (float) (p1.zCoord - p2.zCoord);
+		float xd = (float) (p1.x - p2.x);
+		float yd = (float) (p1.y - p2.y);
+		float zd = (float) (p1.z - p2.z);
 		double var7 = (double) MathHelper.sqrt((double) (xd * xd + zd * zd));
 		float rotYaw = (float) (Math.atan2((double) xd, (double) zd) * 180.0D / 3.141592653589793D);
 		float rotPitch = (float) (Math.atan2((double) yd, var7) * 180.0D / 3.141592653589793D);
@@ -72,7 +72,7 @@ public class RenderSpellThunder extends RenderEntity {
 		GlStateManager.blendFunc(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE);
 
 		double distance = point1.distanceTo(point2);
-		Vec3d dirVec = new Vec3d(point2.xCoord - point1.xCoord, point2.yCoord - point1.yCoord, point2.zCoord - point1.zCoord);
+		Vec3d dirVec = new Vec3d(point2.x - point1.x, point2.y - point1.y, point2.z - point1.z);
 		Vec3d invDir = new Vec3d(1, 1, 1).subtract(dirVec);
 
 		Vec3d[] vectors = new Vec3d[maxSegments / 2 + random.nextInt(maxSegments / 2)];
@@ -83,12 +83,12 @@ public class RenderSpellThunder extends RenderEntity {
 		for (int i = 1; i < vectors.length - 1; i++) {
 			double pos = (i / (double) vectors.length) * distance;
 
-			Vec3d point = new Vec3d(point1.xCoord, point1.yCoord, point1.zCoord);
-			point = point.add(new Vec3d(dirVec.xCoord, dirVec.yCoord, dirVec.zCoord).scale(pos));
+			Vec3d point = new Vec3d(point1.x, point1.y, point1.z);
+			point = point.add(new Vec3d(dirVec.x, dirVec.y, dirVec.z).scale(pos));
 
-			double randX = (-0.5 + random.nextDouble()) * maxDeflection * invDir.xCoord;
-			double randY = (-0.5 + random.nextDouble()) * maxDeflection * invDir.yCoord;
-			double randZ = (-0.5 + random.nextDouble()) * maxDeflection * invDir.zCoord;
+			double randX = (-0.5 + random.nextDouble()) * maxDeflection * invDir.x;
+			double randY = (-0.5 + random.nextDouble()) * maxDeflection * invDir.y;
+			double randZ = (-0.5 + random.nextDouble()) * maxDeflection * invDir.z;
 
 			point = point.addVector(randX, randY, randZ);
 

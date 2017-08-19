@@ -1,6 +1,5 @@
 package Tamaized.Tomes.proxy;
 
-import Tamaized.TamModized.proxy.AbstractProxy;
 import Tamaized.Tomes.Tomes;
 import Tamaized.Tomes.entity.EntityArcthunder;
 import Tamaized.Tomes.entity.EntityElthunder;
@@ -15,6 +14,7 @@ import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraftforge.fml.client.registry.IRenderFactory;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
+import tamaized.tammodized.proxy.AbstractProxy;
 
 public class ClientProxy extends AbstractProxy {
 

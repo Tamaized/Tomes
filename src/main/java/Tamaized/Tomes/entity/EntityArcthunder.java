@@ -1,6 +1,5 @@
 package Tamaized.Tomes.entity;
 
-import Tamaized.TamModized.helper.MotionHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -11,6 +10,7 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
+import tamaized.tammodized.common.helper.MotionHelper;
 
 import java.util.List;
 
@@ -45,14 +45,17 @@ public class EntityArcthunder extends ProjectileBase {
 	@Override
 	public void onUpdate() {
 		if (hasHit()) {
-			if(world.isRemote) return;
+			if (world.isRemote)
+				return;
 			List<EntityLivingBase> list = world.getEntitiesWithinAABB(EntityLivingBase.class, new AxisAlignedBB(getPosition().add(-1, -1, -1), getPosition().add(1, 1, 1)));
 			for (EntityLivingBase target : list) {
-				if(target == shootingEntity) continue;
-				MotionHelper.addMotion(target, (posX - target.posX)*0.25, (posY - target.posY)*0.25, (posZ - target.posZ)*0.25);
+				if (target == shootingEntity)
+					continue;
+				MotionHelper.addMotion(target, (posX - target.posX) * 0.25, (posY - target.posY) * 0.25, (posZ - target.posZ) * 0.25);
 				target.attackEntityFrom(getDamageSource(), (float) getDamage());
 			}
-			if(ticksLeft-- <= 0) setDead();
+			if (ticksLeft-- <= 0)
+				setDead();
 		} else
 			super.onUpdate();
 	}
@@ -74,8 +77,9 @@ public class EntityArcthunder extends ProjectileBase {
 
 	@Override
 	protected void onHit(RayTraceResult raytraceResultIn) {
-		if(world.isRemote) return;
-		if(raytraceResultIn.entityHit == null){
+		if (world.isRemote)
+			return;
+		if (raytraceResultIn.entityHit == null) {
 			setDead();
 			return;
 		}

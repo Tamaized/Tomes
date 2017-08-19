@@ -1,6 +1,5 @@
 package Tamaized.Tomes.entity;
 
-import Tamaized.TamModized.helper.RayTraceHelper;
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import io.netty.buffer.ByteBuf;
@@ -24,8 +23,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.*;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.registry.IEntityAdditionalSpawnData;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
+import tamaized.tammodized.common.helper.RayTraceHelper;
 
 import javax.annotation.Nullable;
 import java.util.HashSet;
@@ -89,7 +87,7 @@ public abstract class ProjectileBase extends EntityArrow implements IProjectile,
 		setPosition(x, y + shooter.getEyeHeight() - 0.5f, z);
 		startingPoint = getPositionVector();
 		Vec3d vec = shooter.getLook(1.0f);
-		setTheVelocity(vec.xCoord, vec.yCoord, vec.zCoord);
+		setTheVelocity(vec.x, vec.y, vec.z);
 	}
 
 	public ProjectileBase(World worldIn, EntityLivingBase shooter, EntityLivingBase target, float dmg) {
@@ -184,7 +182,7 @@ public abstract class ProjectileBase extends EntityArrow implements IProjectile,
 
 		if (iblockstate.getMaterial() != Material.AIR) {// check if hit block
 			AxisAlignedBB axisalignedbb = iblockstate.getCollisionBoundingBox(world, blockpos);
-			if (axisalignedbb != Block.NULL_AABB && axisalignedbb.offset(blockpos).isVecInside(new Vec3d(posX, posY, posZ))) {
+			if (axisalignedbb != Block.NULL_AABB && axisalignedbb.offset(blockpos).contains(new Vec3d(posX, posY, posZ))) {
 				inGround = true;
 			}
 		}
@@ -364,9 +362,9 @@ public abstract class ProjectileBase extends EntityArrow implements IProjectile,
 			IBlockState iblockstate = world.getBlockState(blockpos);
 			inTile = iblockstate.getBlock();
 			inData = inTile.getMetaFromState(iblockstate);
-			motionX = (double) ((float) (raytraceResultIn.hitVec.xCoord - posX));
-			motionY = (double) ((float) (raytraceResultIn.hitVec.yCoord - posY));
-			motionZ = (double) ((float) (raytraceResultIn.hitVec.zCoord - posZ));
+			motionX = (double) ((float) (raytraceResultIn.hitVec.x - posX));
+			motionY = (double) ((float) (raytraceResultIn.hitVec.y- posY));
+			motionZ = (double) ((float) (raytraceResultIn.hitVec.z- posZ));
 			float f2 = MathHelper.sqrt(motionX * motionX + motionY * motionY + motionZ * motionZ);
 			posX -= motionX / (double) f2 * 0.05000000074505806D;
 			posY -= motionY / (double) f2 * 0.05000000074505806D;

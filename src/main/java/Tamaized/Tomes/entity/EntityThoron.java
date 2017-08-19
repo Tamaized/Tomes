@@ -1,6 +1,5 @@
 package Tamaized.Tomes.entity;
 
-import Tamaized.TamModized.helper.MotionHelper;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -9,6 +8,7 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
+import tamaized.tammodized.common.helper.MotionHelper;
 
 public class EntityThoron extends ProjectileBase {
 
@@ -24,9 +24,9 @@ public class EntityThoron extends ProjectileBase {
 	@Override
 	public void writeSpawnData(ByteBuf buffer) {
 		super.writeSpawnData(buffer);
-		buffer.writeDouble(startingPoint.xCoord);
-		buffer.writeDouble(startingPoint.yCoord);
-		buffer.writeDouble(startingPoint.zCoord);
+		buffer.writeDouble(startingPoint.x);
+		buffer.writeDouble(startingPoint.y);
+		buffer.writeDouble(startingPoint.z);
 	}
 
 	@Override

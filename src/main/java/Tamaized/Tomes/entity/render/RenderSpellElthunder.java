@@ -1,9 +1,9 @@
 package Tamaized.Tomes.entity.render;
 
+import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.OpenGlHelper;
 import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.VertexBuffer;
 import net.minecraft.client.renderer.entity.RenderEntity;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
@@ -33,13 +33,13 @@ public class RenderSpellElthunder extends RenderEntity {
 			GlStateManager.translate(x, y, z);
 			GlStateManager.color(1, 1, 0, 0.5f);
 			GlStateManager.rotate(180.0F - renderManager.playerViewY, 0.0F, 1.0F, 0.0F);
-			GlStateManager.rotate((float)(this.renderManager.options.thirdPersonView == 2 ? -1 : 1) * -this.renderManager.playerViewX, 1.0F, 0.0F, 0.0F);
+			GlStateManager.rotate((float) (this.renderManager.options.thirdPersonView == 2 ? -1 : 1) * -this.renderManager.playerViewX, 1.0F, 0.0F, 0.0F);
 			Tessellator tess = Tessellator.getInstance();
-			VertexBuffer buffer = tess.getBuffer();
+			BufferBuilder buffer = tess.getBuffer();
 			buffer.begin(GL11.GL_TRIANGLE_FAN, DefaultVertexFormats.POSITION);
 			float scale = 0.2f;
 			for (int i = 0; i < 360; i++) {
-				buffer.pos(Math.cos(Math.toRadians(i))*scale, Math.sin(Math.toRadians(i))*scale, 0).endVertex();
+				buffer.pos(Math.cos(Math.toRadians(i)) * scale, Math.sin(Math.toRadians(i)) * scale, 0).endVertex();
 			}
 			tess.draw();
 		}
